@@ -1,36 +1,184 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nhắc Lịch Âm Frontend
 
-## Getting Started
+Frontend cho ứng dụng nhắc lịch âm Việt Nam, được xây dựng với Next.js, TypeScript, Tailwind CSS và shadcn/ui.
 
-First, run the development server:
+## Tính năng
+
+- ✅ Hiển thị ngày âm lịch hiện tại
+- ✅ Xem lời nhắc cho ngày âm lịch hôm nay
+- ✅ Tạo lời nhắc mới theo ngày âm lịch
+- ✅ Giao diện responsive, mobile-first
+- ✅ UI hiện đại với shadcn/ui components
+- ✅ Kết nối với Supabase backend
+
+## Công nghệ sử dụng
+
+- **Next.js 15** - React framework với app router
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **shadcn/ui** - UI components
+- **Supabase** - Database và API
+- **lunar-calendar-ts-vi** - Thư viện lịch âm Việt Nam
+
+## Cài đặt
+
+### 1. Clone và install dependencies
+
+```bash
+cd nhaclicham-frontend
+npm install
+```
+
+### 2. Cấu hình môi trường
+
+Tạo file `.env.local` từ `.env.example`:
+
+```bash
+cp .env.example .env.local
+```
+
+Cập nhật các biến môi trường:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
+```
+
+### 3. Chạy development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Truy cập http://localhost:3000 để xem ứng dụng.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Cấu trúc project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                    # Next.js app router pages
+│   ├── create/            # Trang tạo lời nhắc
+│   ├── profile/           # Trang hồ sơ (placeholder)
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Trang chủ
+├── components/
+│   ├── ui/                # shadcn/ui components
+│   ├── Navigation.tsx     # Component navigation
+│   └── ReminderCard.tsx   # Component hiển thị reminder
+├── lib/
+│   ├── supabase.ts        # Supabase client config
+│   ├── lunarService.ts    # Lunar calendar operations
+│   ├── reminderService.ts # Reminder API operations
+│   └── utils.ts           # Utility functions
+└── types/
+    └── reminder.ts        # TypeScript interfaces
+```
 
-## Learn More
+## Sử dụng
 
-To learn more about Next.js, take a look at the following resources:
+### Trang chủ (/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Hiển thị ngày âm lịch hiện tại
+- Danh sách lời nhắc cho hôm nay
+- Liên kết tạo lời nhắc mới
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Trang tạo lời nhắc (/create)
 
-## Deploy on Vercel
+- Form tạo lời nhắc với các trường:
+  - Nội dung lời nhắc
+  - Ngày âm lịch (1-30)
+  - Tháng âm lịch (1-12)
+  - Checkbox lặp lại hàng năm
+- Preview lời nhắc trước khi tạo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Trang hồ sơ (/profile)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Placeholder cho tính năng authentication
+- Sẽ được phát triển trong tương lai
+
+## API Integration
+
+Frontend kết nối với Supabase thông qua:
+
+1. **Direct Supabase client** - Cho CRUD operations
+2. **Lunar calendar library** - Tính toán ngày âm lịch (client-side)
+
+### Services
+
+- `LunarService` - Xử lý chuyển đổi dương-âm lịch
+- `ReminderService` - CRUD operations cho reminders
+
+## Responsive Design
+
+- **Mobile-first approach**
+- **Breakpoints**: sm, md, lg
+- **Navigation**: Responsive menu cho mobile
+- **Cards**: Grid layout tự động điều chỉnh
+
+## Development
+
+### Lệnh có sẵn
+
+```bash
+npm run dev          # Development server
+npm run build        # Production build
+npm run start        # Production server
+npm run lint         # ESLint check
+```
+
+### Adding shadcn/ui components
+
+```bash
+npx shadcn@latest add [component-name]
+```
+
+## Troubleshooting
+
+### Lỗi Supabase connection
+
+- Kiểm tra `NEXT_PUBLIC_SUPABASE_URL` và `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- Đảm bảo bảng `reminders` đã được tạo trong Supabase
+
+### Lỗi lunar calendar
+
+- Thư viện `lunar-calendar-ts-vi` chạy client-side
+- Đảm bảo component sử dụng `'use client'` directive
+
+### TypeScript errors
+
+- Restart TypeScript server trong VS Code: `Cmd/Ctrl + Shift + P` > "TypeScript: Restart TS Server"
+
+## Deploy
+
+Project có thể deploy lên:
+
+- **Vercel** (recommended)
+- **Netlify**
+- **Railway**
+
+### Vercel deployment
+
+```bash
+npm install -g vercel
+vercel
+```
+
+Nhớ cập nhật environment variables trên platform deploy!
+
+## Roadmap
+
+- [ ] Authentication với Supabase Auth
+- [ ] User-specific reminders
+- [ ] Push notifications
+- [ ] Dark mode
+- [ ] PWA support
+- [ ] Export/Import reminders
+
+## Contributing
+
+1. Fork project
+2. Tạo feature branch
+3. Commit changes
+4. Push to branch
+5. Tạo Pull Request
