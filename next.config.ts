@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Tối ưu cho Cloudflare Pages - sử dụng export thay vì standalone
+  // Tối ưu cho Cloudflare Pages - sử dụng export
   output: "export",
-  trailingSlash: true,
+  trailingSlash: false, // Tắt trailing slash
   images: {
     unoptimized: true, // Cloudflare Pages không hỗ trợ Image Optimization
-    domains: ["aekfivlrnrdzolsiipdf.supabase.co"], // Domain của Supabase storage
   },
   // Tắt một số tính năng không cần thiết
   poweredByHeader: false,
