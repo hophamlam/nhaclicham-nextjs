@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Tối ưu cho Cloudflare Pages
-  output: "standalone",
+  // Tối ưu cho Cloudflare Pages - sử dụng export thay vì standalone
+  output: "export",
+  trailingSlash: true,
   images: {
     unoptimized: true, // Cloudflare Pages không hỗ trợ Image Optimization
     domains: ["aekfivlrnrdzolsiipdf.supabase.co"], // Domain của Supabase storage
@@ -20,11 +21,9 @@ const nextConfig = {
   experimental: {
     webpackBuildWorker: false,
   },
-  webpack: (config, { isServer }) => {
-    // Tắt cache trong production
-    if (!isServer) {
-      config.cache = false;
-    }
+  webpack: (config) => {
+    // Tắt hoàn toàn cache cho cả client và server
+    config.cache = false;
     return config;
   },
 };
