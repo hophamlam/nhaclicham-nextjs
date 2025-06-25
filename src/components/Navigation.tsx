@@ -23,14 +23,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createClient } from "@/lib/supabase-client";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Navigation() {
   const router = useRouter();
-  const supabase = createClientComponentClient();
+  const supabase = createClient();
   const [user, setUser] = useState<SupabaseUser | null>(null);
 
   useEffect(() => {

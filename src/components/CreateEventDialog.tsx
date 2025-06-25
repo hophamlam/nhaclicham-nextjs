@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createClient } from "@/lib/supabase-client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Save, Plus, Edit, Copy, Trash2, Info } from "lucide-react";
@@ -60,7 +60,7 @@ export function CreateEventDialog({
     Array<{ id: string; name: string; is_default: boolean }>
   >([]);
 
-  const supabase = createClientComponentClient();
+  const supabase = createClient();
   const isEditMode = !!editingEvent;
 
   // Load dữ liệu khi edit
