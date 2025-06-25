@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && rm -rf .next/cache && ls -la out/ && cp -r out/* . 2>/dev/null || true",
+    "build": "next build && rm -rf .next/cache && cp -r out/* . 2>/dev/null || true",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
