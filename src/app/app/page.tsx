@@ -1,9 +1,12 @@
-import { redirect } from "next/navigation";
-
 /**
- * Trang chuyển hướng từ /app đến /app/dash
- * Đây là entry point cho người dùng đã đăng nhập
+ * Trang chủ của phần ứng dụng (sau khi đăng nhập)
+ * Route: /app
  */
 export default function AppPage() {
-  redirect("/app/dash");
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <p>Chào mừng đến với ứng dụng Nhắc Lịch Âm</p>
+    </div>
+  );
 }
