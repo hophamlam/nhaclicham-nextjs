@@ -60,13 +60,15 @@
 
 /* Custom styles for lunar calendar */
 .lunar-date {
-  @apply text-3xl font-bold text-red-600;
+  @apply text-3xl font-bold text-red-600 dark:text-red-400;
 }
 
 .lunar-card {
   @apply bg-gradient-to-br from-orange-50 to-red-50 border-orange-200 shadow-md;
+  @apply dark:from-orange-950/20 dark:to-red-950/20 dark:border-orange-800;
 }
 
 .reminder-card {
   @apply bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 shadow-md;
+  @apply dark:from-blue-950/20 dark:to-indigo-950/20 dark:border-blue-800;
 }

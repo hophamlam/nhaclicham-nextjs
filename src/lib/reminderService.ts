@@ -26,8 +26,9 @@ export class ReminderService {
       // Return filtered mock data for development
       return this.getMockReminders().filter((reminder) =>
         LunarService.shouldShowReminderToday(
-          reminder.lunar_day,
-          reminder.lunar_month
+          reminder.lunarDay,
+          reminder.lunarMonth,
+          reminder.isLeapMonth || false
         )
       );
     }
@@ -143,18 +144,18 @@ export class ReminderService {
         id: "1",
         user_id: "demo-user",
         note: "Ngày giỗ tổ tiên",
-        lunar_day: 10,
-        lunar_month: 3,
-        repeat_every_year: true,
+        isLunar: true,
+        lunarDay: 10,
+        lunarMonth: 3,
         created_at: new Date().toISOString(),
       },
       {
         id: "2",
         user_id: "demo-user",
         note: "Cúng rằm tháng",
-        lunar_day: 15,
-        lunar_month: 1,
-        repeat_every_year: true,
+        isLunar: true,
+        lunarDay: 15,
+        lunarMonth: 1,
         created_at: new Date().toISOString(),
       },
     ];

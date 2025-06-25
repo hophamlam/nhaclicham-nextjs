@@ -1,26 +1,40 @@
 import "./globals.css";
-import { Navigation } from "@/components/Navigation";
-import { Inter } from "next/font/google";
+import { Nunito } from "next/font/google";
+import type { Metadata } from "next";
+import { QueryProvider } from "@/providers/QueryProvider";
+import { ToastProvider } from "@/providers/ToastProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const nunito = Nunito({
+  subsets: ["latin", "vietnamese"],
+  display: "swap",
+});
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Nhắc Lịch Âm - Lunar Calendar Reminders",
   description: "Ứng dụng nhắc nhở theo lịch âm Việt Nam",
 };
 
+/**
+ * Layout chính của ứng dụng
+ * Bao gồm QueryProvider và ToastProvider
+ */
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi">
-      <body className={inter.className}>
-        <div className="min-h-screen bg-gray-50">
-          <Navigation />
-          <main className="container mx-auto px-4 py-8">{children}</main>
-        </div>
+    <html lang="vi" suppressHydrationWarning>
+      <body className={nunito.className}>
+        <ThemeProvider defaultTheme="system" storageKey="nhaclicham-theme">
+          <QueryProvider>
+            <div className="min-h-screen bg-background text-foreground">
+              {children}
+            </div>
+            <ToastProvider />
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
