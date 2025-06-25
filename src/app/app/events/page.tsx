@@ -1,6 +1,6 @@
 "use client";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createClient } from "@/lib/supabase-client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { type Reminder } from "@/types/reminder";
@@ -41,7 +41,7 @@ export default function EventsPage() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [user, setUser] = useState<any>(null);
 
-  const supabase = createClientComponentClient();
+  const supabase = createClient();
   const router = useRouter();
 
   // Lấy tất cả sự kiện của người dùng
