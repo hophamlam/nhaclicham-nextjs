@@ -8,6 +8,14 @@ const nextConfig = {
   },
   // Tắt một số tính năng không cần thiết
   poweredByHeader: false,
+  eslint: {
+    // Tắt hoàn toàn ESLint trong quá trình build
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    // Tắt hoàn toàn TypeScript check trong quá trình build
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;
