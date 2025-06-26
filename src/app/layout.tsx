@@ -1,4 +1,7 @@
 import { Navigation } from "@/components/Navigation";
+import { ThemeProvider } from "@/providers/ThemeProvider";
+import { ToastProvider } from "@/providers/ToastProvider";
+import { QueryProvider } from "@/providers/QueryProvider";
 
 /**
  * Layout cho thư mục /app
@@ -12,3 +15,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     </>
   );
 }
+
+export const dynamic = "force-dynamic";
+
+export const metadata = {
+  title: "Nhắc Lịch Âm",
+};
