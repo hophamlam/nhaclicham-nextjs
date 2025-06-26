@@ -1,0 +1,9 @@
+name = "nhaclicham-frontend"
+compatibility_date = "2024-06-26"
+pages_build_output_dir = ".vercel/output"
+
+[env.production]
+# Thêm biến môi trường nếu cần
+# [vars]
+# SUPABASE_URL = "..."
+# SUPABASE_ANON_KEY = "..." 

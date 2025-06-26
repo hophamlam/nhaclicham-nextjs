@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Tối ưu cho Cloudflare Pages - sử dụng export
-  output: "export",
+  // Loại bỏ output: 'export' để Next.js build chế độ SSR/Edge (Cloudflare Pages Functions)
   trailingSlash: false, // Tắt trailing slash
   images: {
     unoptimized: true, // Cloudflare Pages không hỗ trợ Image Optimization
@@ -20,7 +19,7 @@ const nextConfig = {
   experimental: {
     webpackBuildWorker: false,
   },
-  webpack: (config) => {
+  webpack: (config: any) => {
     // Tắt hoàn toàn cache cho cả client và server
     config.cache = false;
     return config;

@@ -166,6 +166,37 @@ vercel
 
 Nhớ cập nhật environment variables trên platform deploy!
 
+## Triển khai Cloudflare Pages Functions (Next.js App Router)
+
+1. **Cập nhật next.config.ts**
+   - Xoá hoặc comment dòng `output: "export"`.
+   - Đảm bảo không dùng static export, chỉ cần `next build`.
+
+2. **Tạo file `wrangler.toml` ở thư mục gốc:**
+
+   ```toml
+   name = "nhaclicham-frontend"
+   compatibility_date = "2024-06-26"
+   pages_build_output_dir = ".vercel/output"
+
+   [env.production]
+   # Thêm biến môi trường nếu cần
+   # [vars]
+   # SUPABASE_URL = "..."
+   # SUPABASE_ANON_KEY = "..."
+   ```
+
+3. **Cấu hình Cloudflare Pages:**
+   - Build command: `npx next build`
+   - Output directory: `.vercel/output/static`
+   - Enable Pages Functions (tự động nhận diện với Next.js >=13)
+
+4. **Push code lên GitHub, Cloudflare Pages sẽ tự động build & deploy.**
+
+5. **Nếu cần thêm biến môi trường, cấu hình trong dashboard Cloudflare Pages.**
+
+> Nếu gặp lỗi, kiểm tra log build trên Cloudflare Pages hoặc hỏi lại AI để được hỗ trợ!
+
 ## Roadmap
 
 - [ ] Authentication với Supabase Auth
