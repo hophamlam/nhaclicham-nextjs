@@ -1,0 +1,26 @@
+   ▲ Next.js 15.3.3
+   - Environments: .env.local, .env.production
+   - Experiments (use with caution):
+     ⨯ webpackBuildWorker
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 2000ms
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/2) ...
+ ✓ Generating static pages (2/2)
+   Finalizing page optimization ...
+   Collecting build traces ...
+   Exporting (0/2) ...
+ ✓ Exporting (2/2)
+
+Route (pages)                                Size  First Load JS
+─ ○ /404                                    190 B        93.7 kB
++ First Load JS shared by all             93.5 kB
+  ├ chunks/framework-f593a28cde54158e.js  57.7 kB
+  ├ chunks/main-e6a95370a7f756e5.js       34.1 kB
+  └ other shared chunks (total)           1.66 kB
+
+○  (Static)  prerendered as static content
+
